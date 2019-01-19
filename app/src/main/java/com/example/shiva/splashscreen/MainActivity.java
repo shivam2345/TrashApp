@@ -14,6 +14,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     ImageView image, image2, target;
+    TextView points;
+    static int pointnumber =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,13 +24,15 @@ public class MainActivity extends AppCompatActivity {
         image = findViewById(R.id.imageView);
         image2 = findViewById(R.id.imageView2);
         target = findViewById(R.id.txt);
+        points = findViewById(R.id.pts);
 
+        points.setText("Points: "+pointnumber);
         image.setOnLongClickListener(longClickListener);
         image2.setOnLongClickListener(longClickListener);
         target.setOnDragListener(dragListener);
 
-        // moveAnimation(image, 500);
-        // moveAnimation(image2, 1000);
+       // moveAnimation(image, 500);
+       // moveAnimation(image2, 1000);
     }
 
     public void moveAnimation(ImageView imageView, int time)
@@ -72,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
                                 .start();
                         Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                         image.setVisibility(View.GONE);
+                        pointnumber++;
+                        points.setText("Points: "+pointnumber);
                     }
                     if (view.getId() == R.id.imageView2)
                     {
