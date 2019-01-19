@@ -9,10 +9,10 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
 
     ImageView image, image2;
-    items bananapeel = new items(true,10,R.drawable.banana);
-    items applecore = new items(true,20,R.drawable.apple);
-    items plasticbottle = new items(true,30,R.drawable.banana);
-    items papercup = new items(true,40,R.drawable.banana);
+    items bananapeel = new items(true,10,R.drawable.banana, 0, 0);
+    items applecore = new items(true,20,R.drawable.apple, 0, 0);
+    items plasticbottle = new items(true,30,R.drawable.banana, 0, 0);
+    items papercup = new items(true,40,R.drawable.banana,0, 0);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
