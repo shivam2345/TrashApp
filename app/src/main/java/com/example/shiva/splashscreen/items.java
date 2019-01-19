@@ -3,8 +3,10 @@ package com.example.shiva.splashscreen;
 public class items {
     boolean isItTrash;
     int speed;
-    public items(boolean isItTrashOrNot, int newspeed) {
+    int imageID;
+    public items(boolean isItTrashOrNot, int newspeed, int imageid) {
         isItTrash = isItTrashOrNot;
-        newspeed = speed;
+        speed = newspeed;
+        imageID = imageid;
     }
 }

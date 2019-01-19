@@ -9,13 +9,19 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
 
     ImageView image, image2;
+    items bananapeel = new items(true,10,R.drawable.banana);
+    items applecore = new items(true,20,R.drawable.banana);
+    items plasticbottle = new items(true,30,R.drawable.banana);
+    items papercup = new items(true,40,R.drawable.banana);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         image = findViewById(R.id.imageView);
         image2 = findViewById(R.id.imageView2);
+
+        image.setImageResource(bananapeel.imageID);
+        image2.setImageResource(bananapeel.imageID);
         moveAnimation(image, 500);
         moveAnimation(image2, 1000);
     }
