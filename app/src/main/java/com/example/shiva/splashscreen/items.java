@@ -2,7 +2,9 @@ package com.example.shiva.splashscreen;
 
 public class items {
     boolean isItTrash;
-    public items(boolean isItTrashOrNot) {
+    int speed;
+    public items(boolean isItTrashOrNot, int newspeed) {
         isItTrash = isItTrashOrNot;
+        newspeed = speed;
     }
 }
