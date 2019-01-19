@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView image, image2;
     items bananapeel = new items(true,10,R.drawable.banana);
-    items applecore = new items(true,20,R.drawable.banana);
+    items applecore = new items(true,20,R.drawable.apple);
     items plasticbottle = new items(true,30,R.drawable.banana);
     items papercup = new items(true,40,R.drawable.banana);
     @Override
