@@ -6,14 +6,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
     ImageView image, image2, target;
     TextView points;
     static int score = 0;
@@ -21,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         image = findViewById(R.id.imageView);
         image2 = findViewById(R.id.imageView2);
         target = findViewById(R.id.txt);
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
    View.OnDragListener dragListener = new View.OnDragListener() {
-        @Override
+       @Override
         public boolean onDrag(View v, DragEvent event) {
             int dragEvent = event.getAction();
             final View view = (View) event.getLocalState();
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                                 .y(target.getY())
                                 .setDuration(700)
                                 .start();
+                        Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                         image.setVisibility(View.GONE);
                         score++;
                         points.setText("Score: "+ score);
