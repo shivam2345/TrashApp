@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         image.setOnLongClickListener(longClickListener);
         image2.setOnLongClickListener(longClickListener);
         target.setOnDragListener(dragListener);
-       // moveAnimation(image, 500);
-       // moveAnimation(image2, 1000);
+        // moveAnimation(image, 500);
+        // moveAnimation(image2, 1000);
     }
 
     public void hitCheck() {
@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-   View.OnDragListener dragListener = new View.OnDragListener() {
-       @Override
+    View.OnDragListener dragListener = new View.OnDragListener() {
+        @Override
         public boolean onDrag(View v, DragEvent event) {
             int dragEvent = event.getAction();
             final View view = (View) event.getLocalState();
