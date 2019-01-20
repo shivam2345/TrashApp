@@ -43,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
         //image2.setOnLongClickListener(longClickListener);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
         image.setLayoutParams(layoutParams);
-        RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(360, 160);
-        image2.setLayoutParams(layoutParams);
-        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(360, 160);
-        image3.setLayoutParams(layoutParams);
+        RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(360, 150);
+        image2.setLayoutParams(layoutParams1);
+        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(360, 150);
+        image3.setLayoutParams(layoutParams2);
         moveAnimation(image, 500f);
-        moveAnimation(image2, 1000f);
-        moveAnimation(image3, 1500f);
+        moveAnimation(image2, 500f);
+        moveAnimation(image3, 500f);
         // moveAnimation(image, 500);
         // moveAnimation(image2, 1000);
     }
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         animation.setDuration(5000);
         animation.start();
     }
+
     private final class ChoiceTouchListener implements OnTouchListener {
         public boolean onTouch(View view, MotionEvent event) {
             final int X = (int) event.getRawX();
@@ -89,17 +90,17 @@ public class MainActivity extends AppCompatActivity {
                         int imgTop = image.getTop();
                         int imgBottom = image.getBottom();
 
-                        debugchannel.setText("target right: " + targetRight + "; target left: " + targetLeft + "; img right: " + imgRight + "; img left: " + imgLeft
+                /*debugchannel.setText("target right: " + targetRight + "; target left: " + targetLeft + "; img right: " + imgRight + "; img left: " + imgLeft
                                 + "target top: " + targetTop + "; target bottom: " + targetBottom + "; img top: " + imgTop + "; img bottom: " + imgBottom);
-
-                        if (targetRight > imgRight && targetLeft < imgLeft && targetTop > imgTop && targetBottom > imgBottom && image.getTag().equals("trash")) {
+*/
+                        if (targetRight > imgRight && targetLeft < imgLeft && targetTop > imgTop
+                                && targetBottom > imgBottom && image.getTag().equals("trash")) {
                             image.setVisibility(View.GONE);
                             score++;
                             points.setText("" + score);
-                            //debugchannel.setText("yeaaaa");
-
                         }
-                        else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop && targetBottom2 > imgBottom && image.getTag().equals("trash"))
+                        else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop
+                                && targetBottom2 > imgBottom && image.getTag().equals("trash"))
                         {
                             hitCheck();
                         }
@@ -111,16 +112,15 @@ public class MainActivity extends AppCompatActivity {
                         int imgTop = image2.getTop();
                         int imgBottom = image2.getBottom();
 
-                        debugchannel.setText("target right: " + targetRight + "; target left: " + targetLeft + "; img right: " + imgRight + "; img left: " + imgLeft
+                       /* debugchannel.setText("target right: " + targetRight + "; target left: " + targetLeft + "; img right: " + imgRight + "; img left: " + imgLeft
                                 + "target top: " + targetTop + "; target bottom: " + targetBottom + "; img top: " + imgTop + "; img bottom: " + imgBottom);
-
-                        if (targetRight > imgRight && targetLeft < imgLeft && targetTop > imgTop && targetBottom > imgBottom && image.getTag().equals("trash")) {
-
+*/
+                        if (targetRight > imgRight && targetLeft < imgLeft && targetTop > imgTop
+                                && targetBottom > imgBottom && image.getTag().equals("recycle")) {
                             hitCheck();
-                            //debugchannel.setText("yeaaaa");
-
                         }
-                        else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop && targetBottom2 > imgBottom && image.getTag().equals("trash"))
+                        else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop
+                                && targetBottom2 > imgBottom && image.getTag().equals("trash"))
                         {
                             image2.setVisibility(View.GONE);
                             score++;
@@ -135,10 +135,8 @@ public class MainActivity extends AppCompatActivity {
                         int imgTop = image3.getTop();
                         int imgBottom = image3.getBottom();
 
-                        //debugchannel.setText("target right: " + targetRight + "; target left: " + targetLeft + "; img right: " + imgRight + "; img left: " + imgLeft
-                          //      + "target top: " + targetTop + "; target bottom: " + targetBottom + "; img top: " + imgTop + "; img bottom: " + imgBottom);
-
-                        if (targetRight > imgRight && targetLeft < imgLeft && targetTop > imgTop && targetBottom > imgBottom && image.getTag().equals("trash")) {
+                        if (targetRight > imgRight && targetLeft < imgLeft && targetTop > imgTop
+                                && targetBottom > imgBottom && image.getTag().equals("trash")) {
 
 
                             //debugchannel.setText("yeaaaa");

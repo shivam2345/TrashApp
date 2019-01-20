@@ -33,6 +33,7 @@
         android:layout_height="match_parent"> <ImageView
         android:id="@+id/imageView2"
         android:layout_width="80dp"
+        android:tag="trash"
         android:layout_height="80dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
@@ -52,7 +53,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
-        android:tag="image1tag"
+        android:tag="recycle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.918"
