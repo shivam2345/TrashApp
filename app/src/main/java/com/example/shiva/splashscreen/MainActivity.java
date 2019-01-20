@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     static int score = 0;
     private int _xDelta;
     private int _yDelta;
+    private int count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         debugchannel = findViewById(R.id.debug);
         target = findViewById(R.id.actualtrash);
         points = findViewById(R.id.pts);
-
+        score = 0;
+        count = 0;
         points.setText("" + score);
         image.setOnTouchListener(new ChoiceTouchListener());
         image2.setOnTouchListener(new ChoiceTouchListener());
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     public void moveAnimation(ImageView imageView, float moveValue)
     {
         animation = ObjectAnimator.ofFloat(imageView, "translationY", moveValue);
-        animation.setDuration(5000);
+        animation.setDuration(2000);
         animation.start();
     }
 
@@ -98,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                             image.setVisibility(View.GONE);
                             score++;
                             points.setText("" + score);
+                            count++;
                         }
                         else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop
                                 && targetBottom2 > imgBottom && image.getTag().equals("trash"))
@@ -116,15 +119,16 @@ public class MainActivity extends AppCompatActivity {
                                 + "target top: " + targetTop + "; target bottom: " + targetBottom + "; img top: " + imgTop + "; img bottom: " + imgBottom);
 */
                         if (targetRight > imgRight && targetLeft < imgLeft && targetTop > imgTop
-                                && targetBottom > imgBottom && image.getTag().equals("recycle")) {
+                                && targetBottom > imgBottom && image2.getTag().equals("trash")) {
                             hitCheck();
                         }
                         else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop
-                                && targetBottom2 > imgBottom && image.getTag().equals("trash"))
+                                && targetBottom2 > imgBottom && image2.getTag().equals("recycle"))
                         {
                             image2.setVisibility(View.GONE);
                             score++;
                             points.setText("" + score);
+                            count++;
                         }
                     }
 
@@ -136,28 +140,26 @@ public class MainActivity extends AppCompatActivity {
                         int imgBottom = image3.getBottom();
 
                         if (targetRight > imgRight && targetLeft < imgLeft && targetTop > imgTop
-                                && targetBottom > imgBottom && image.getTag().equals("trash")) {
+                                && targetBottom > imgBottom && image3.getTag().equals("trash")) {
 
 
                             //debugchannel.setText("yeaaaa");
                             image3.setVisibility(View.GONE);
                             score++;
                             points.setText("" + score);
-
+                            count++;
                         }
-                        else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop && targetBottom2 > imgBottom && image.getTag().equals("trash"))
+                        else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop
+                                && targetBottom2 > imgBottom && image3.getTag().equals("trash"))
                         {
                             hitCheck();
                         }
                     }
-                    /*int target2Right = target2.getRight();
-                    int target2Left = target2.getLeft();
-                    int target2Top = target2.getTop();
-                    int target2Bottom = target2.getBottom();
 
-                    if (target2Right > imgRight && target2Left < imgLeft && target2Top < imgTop && target2Bottom > imgBottom && img.getTag().equals("recycle")) {
-                        img.setVisibility(View.GONE);
-                    }*/
+                    if (count == 3)
+                    {
+                        hitCheck();
+                    }
 
                     break;
                 case MotionEvent.ACTION_POINTER_DOWN:
