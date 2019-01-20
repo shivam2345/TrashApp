@@ -45,7 +45,9 @@
         app:layout_constraintVertical_bias="0.018"
         app:srcCompat="@drawable/sodacan"/></RelativeLayout>
 
-    <ImageView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"> <ImageView
         android:id="@+id/imageView3"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -57,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.018"
-        app:srcCompat="@drawable/straw"/>
+        app:srcCompat="@drawable/straw"/></RelativeLayout>
 
     <ImageView
         android:id="@+id/trash"

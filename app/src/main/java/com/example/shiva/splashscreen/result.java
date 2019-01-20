@@ -19,6 +19,8 @@ public class result extends Activity {
 
         int score = getIntent().getIntExtra("SCORE", 0);
         scoreLabel.setText(score + "");
+
+        SharedPreferences settings = getSharedPreferences("SCORE", Context.MODE_PRIVATE);
     }
     public void tryAgain(View view) {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
