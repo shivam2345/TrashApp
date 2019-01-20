@@ -98,7 +98,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="plastic water bottle without cap"
+                android:text="plastic bottle w/o cap"
                 android:textSize="18sp"
                 android:paddingLeft="10dp"/>
         </TableRow>

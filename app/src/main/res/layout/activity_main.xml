@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="80dp"
@@ -16,22 +19,23 @@
         android:layout_marginStart="33dp"
         android:layout_marginLeft="33dp"
         android:layout_marginTop="20dp"
-        android:tag="image1tag"
+        android:tag="trash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.018"
-        app:srcCompat="@drawable/banana"/>
+        app:srcCompat="@drawable/banana"/> </RelativeLayout>
 
-    <ImageView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"> <ImageView
         android:id="@+id/imageView2"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/imageView"
         android:layout_marginEnd="23dp"
         android:layout_marginRight="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,13 +43,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.018"
-        app:srcCompat="@drawable/plasticbag"/>
+        app:srcCompat="@drawable/sodacan"/></RelativeLayout>
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignTop="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:tag="image1tag"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,10 +65,10 @@
         android:layout_height="114dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/txt"
+        android:layout_alignTop="@+id/actualtrash"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
-        android:src="@drawable/trash"
+        android:src="@drawable/recycle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -74,16 +77,19 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/txt"
+        android:id="@+id/actualtrash"
         android:layout_width="123dp"
         android:layout_height="114dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="13dp"
         android:layout_marginStart="12dp"
-        android:src="@drawable/recycle"
+        android:src="@drawable/trash"
         tools:layout_editor_absoluteX="245dp"
-        tools:layout_editor_absoluteY="389dp" />
+        tools:layout_editor_absoluteY="389dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="12dp"
+        tools:ignore="InvalidId" />
 
     <TextView
         android:id="@+id/pts"
@@ -99,5 +105,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/debug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="211dp"
+        android:text="TextView" />
 
 </RelativeLayout>
