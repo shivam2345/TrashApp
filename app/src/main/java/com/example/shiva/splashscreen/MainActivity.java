@@ -1,6 +1,7 @@
 package com.example.shiva.splashscreen;
 
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
@@ -37,6 +38,7 @@ public class MainActivity extends Activity {
     private int frameHeight;
     private int frameWidth;
     private Timer timer;
+    double random;
 
     float orangeY;
     float orangeX;
@@ -51,16 +53,30 @@ public class MainActivity extends Activity {
         debugchannel = (TextView) findViewById(R.id.textView2);
 
         //frameHeight = gameFrame.getHeight();
-        //frameWidth = gameFrame.getWidth();
-        // moveAnimation(img, 500);
+        //frameWidth = gameFrame.getWidth();moveAnimation(img, 500);
         img.setOnTouchListener(new ChoiceTouchListener());
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
         img.setLayoutParams(layoutParams);
-        amountToMove = 500;
-        img.animate().translationY(amountToMove);
-        img.invalidate();
-        // moveAnimation(image2, 1000);
-        img.setFocusable(true);
+        /*timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        moveAnimation(img,500);
+                    }
+                });
+
+            }
+        }, 0, 20);*/
+        /*random = Math.floor(Math.random() * Math.floor(10));
+        for(int i = 0; i <= random; i++)
+        {
+            debugchannel.setText("" + random);
+            img.animate().translationY(500);
+        }*/
+        moveAnimation(img, 500f);
         /*WindowManager wm = getWindowManager();
         Display disp = wm.getDefaultDisplay();
         Point size = new Point();
@@ -86,14 +102,12 @@ public class MainActivity extends Activity {
             }
         }, 0, 20);*/
     }
-
-    public void moveAnimation(ImageView imageView, int moveValue)
+    ObjectAnimator animation;
+    public void moveAnimation(ImageView imageView, float moveValue)
     {
-        Animation img = new TranslateAnimation(Animation.ABSOLUTE, Animation.ABSOLUTE, Animation.ABSOLUTE, moveValue);
-        img.setDuration(2000);
-        img.setFillAfter(true);
-        imageView.startAnimation(img);
-        //img.setY(img.getY()+100);
+        animation = ObjectAnimator.ofFloat(imageView, "translationY", moveValue);
+        animation.setDuration(5000);
+        animation.start();
     }
 
     private final class ChoiceTouchListener implements OnTouchListener {
@@ -105,12 +119,13 @@ public class MainActivity extends Activity {
                     RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
                     _xDelta = X - lParams.leftMargin;
                     _yDelta = Y - lParams.topMargin;
+                    animation.cancel();
                     break;
                 case MotionEvent.ACTION_UP:
                     int targetRight = target.getRight();
                     int targetLeft = target.getLeft();
-                    int targetTop = target.getTop() - amountToMove;
-                    int targetBottom = target.getBottom() - amountToMove;
+                    int targetTop = target.getTop();
+                    int targetBottom = target.getBottom();
 
                     int imgRight = img.getRight();
                     int imgLeft = img.getLeft();
@@ -120,7 +135,7 @@ public class MainActivity extends Activity {
                     debugchannel.setText("target right: "+targetRight+ "; target left: "+ targetLeft +"; img right: "+ imgRight+"; img left: "+ imgLeft
                                             + "target top: "+targetTop+ "; target bottom: "+ targetBottom +"; img top: "+ imgTop+"; img bottom: "+ imgBottom);
 
-                    if (targetRight > imgRight && targetLeft < imgLeft && targetTop < imgTop && targetBottom > imgBottom && img.getTag().equals("trash")) {
+                    if (targetRight > imgRight && targetLeft < imgLeft && targetTop + 50 > imgTop && targetTop - 50 < imgTop && targetBottom + 50 > imgBottom && targetBottom - 50 > imgBottom && img.getTag().equals("trash")) {
                         img.setVisibility(View.GONE);
                     }
 
