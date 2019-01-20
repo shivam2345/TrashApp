@@ -2,6 +2,7 @@ package com.example.shiva.splashscreen;
 
 import android.app.usage.UsageEvents;
 import android.content.ClipData;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView image, image2, target;
     TextView points;
-    static int pointnumber =0;
+    static int score = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,15 +27,20 @@ public class MainActivity extends AppCompatActivity {
         target = findViewById(R.id.txt);
         points = findViewById(R.id.pts);
 
-        points.setText("Points: "+pointnumber);
+        points.setText("Score: " + score);
         image.setOnLongClickListener(longClickListener);
         image2.setOnLongClickListener(longClickListener);
         target.setOnDragListener(dragListener);
-
        // moveAnimation(image, 500);
        // moveAnimation(image2, 1000);
     }
 
+    public void hitCheck() {
+        //show result
+        Intent intent = new Intent(getApplicationContext(), result.class);
+        intent.putExtra("SCORE", score);
+        startActivity(intent);
+    }
     public void moveAnimation(ImageView imageView, int time)
     {
         Animation img = new TranslateAnimation(Animation.ABSOLUTE, Animation.ABSOLUTE, Animation.ABSOLUTE, time);
@@ -75,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
                                 .setDuration(700)
                                 .start();
                         image.setVisibility(View.GONE);
-                        pointnumber++;
-                        points.setText("Points: "+pointnumber);
+                        score++;
+                        points.setText("Score: "+ score);
                     }
                     if (view.getId() == R.id.imageView2)
                     {
