@@ -44,10 +44,13 @@ public class MainActivity extends AppCompatActivity {
         image3.setOnTouchListener(new ChoiceTouchListener());
         //image2.setOnLongClickListener(longClickListener);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
+        //layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         image.setLayoutParams(layoutParams);
-        RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(360, 150);
+        RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(150, 150);
+        //layoutParams1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         image2.setLayoutParams(layoutParams1);
-        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(360, 150);
+        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(150, 150);
+        //layoutParams2.addRule(RelativeLayout.CENTER_HORIZONTAL);
         image3.setLayoutParams(layoutParams2);
         moveAnimation(image, 500f);
         moveAnimation(image2, 500f);
@@ -110,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else if(view.getId()==R.id.imageView2)
                     {
-                        int imgRight = image2.getRight() ;
+                        int imgRight = image2.getRight();
                         int imgLeft = image2.getLeft();
                         int imgTop = image2.getTop();
                         int imgBottom = image2.getBottom();
@@ -119,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                                 + "target top: " + targetTop + "; target bottom: " + targetBottom + "; img top: " + imgTop + "; img bottom: " + imgBottom);
 */
                         if (targetRight > imgRight && targetLeft < imgLeft && targetTop > imgTop
-                                && targetBottom > imgBottom && image2.getTag().equals("trash")) {
+                                && targetBottom > imgBottom && image2.getTag().equals("recycle")) {
                             hitCheck();
                         }
                         else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop
@@ -134,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
                     else if(view.getId()==R.id.imageView3)
                     {
-                        int imgRight = image3.getRight() ;
+                        int imgRight = image3.getRight();
                         int imgLeft = image3.getLeft();
                         int imgTop = image3.getTop();
                         int imgBottom = image3.getBottom();
