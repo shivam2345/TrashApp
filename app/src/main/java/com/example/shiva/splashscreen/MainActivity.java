@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private int _xDelta;
     private int _yDelta;
     private int count;
+    RelativeLayout.LayoutParams layoutParams;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,17 +38,16 @@ public class MainActivity extends AppCompatActivity {
         target = findViewById(R.id.actualtrash);
         points = findViewById(R.id.pts);
         score = 0;
-        count = 0;
         points.setText("" + score);
         image.setOnTouchListener(new ChoiceTouchListener());
         image2.setOnTouchListener(new ChoiceTouchListener());
         image3.setOnTouchListener(new ChoiceTouchListener());
         //image2.setOnLongClickListener(longClickListener);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
+        layoutParams = new RelativeLayout.LayoutParams(150, 150);
         image.setLayoutParams(layoutParams);
-        RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(360, 150);
+        RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(150, 150);
         image2.setLayoutParams(layoutParams1);
-        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(360, 150);
+        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(150, 150);
         image3.setLayoutParams(layoutParams2);
         moveAnimation(image, 500f);
         moveAnimation(image2, 500f);
@@ -62,6 +62,54 @@ public class MainActivity extends AppCompatActivity {
         animation = ObjectAnimator.ofFloat(imageView, "translationY", moveValue);
         animation.setDuration(2000);
         animation.start();
+    }
+
+    public void addMorePaper(ImageView imageView10)
+    {
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.RelativeLayout01);
+        relativeLayout.addView(imageView10);
+        imageView10.setOnTouchListener(new ChoiceTouchListener());
+        /*ImageView imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.paper);
+        imageView.setTag("recycle");
+        imageView.setId(imageView10.getId());
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.RelativeLayout01);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        imageView.setLayoutParams(layoutParams);
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        imageView.setOnTouchListener(new ChoiceTouchListener());
+        moveAnimation(imageView, 500);
+        relativeLayout.addView(imageView, layoutParams);*/
+    }
+
+    public void addMoreBanana(ImageView imageView10)
+    {
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.banana);
+        imageView.setTag("trash");
+        imageView.setId(imageView10.getId());
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.RelativeLayout01);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
+        imageView.setLayoutParams(layoutParams);
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        imageView.setOnTouchListener(new ChoiceTouchListener());
+        moveAnimation(imageView, 500);
+        relativeLayout.addView(imageView, layoutParams);
+    }
+
+    public void addMoreBottle()
+    {
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.bottle);
+        imageView.setTag("recycle");
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.RelativeLayout01);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
+        imageView.setLayoutParams(layoutParams);
+        layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        imageView.setOnTouchListener(new ChoiceTouchListener());
+        moveAnimation(imageView, 500);
+        relativeLayout.addView(imageView, layoutParams);
+        image = imageView;
     }
 
     private final class ChoiceTouchListener implements OnTouchListener {
@@ -100,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                             image.setVisibility(View.GONE);
                             score++;
                             points.setText("" + score);
-                            count++;
+                            /*addMoreBottle();*/
                         }
                         else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop
                                 && targetBottom2 > imgBottom && image.getTag().equals("trash"))
@@ -119,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                                 + "target top: " + targetTop + "; target bottom: " + targetBottom + "; img top: " + imgTop + "; img bottom: " + imgBottom);
 */
                         if (targetRight > imgRight && targetLeft < imgLeft && targetTop > imgTop
-                                && targetBottom > imgBottom && image2.getTag().equals("trash")) {
+                                && targetBottom > imgBottom && image2.getTag().equals("recycle")) {
                             hitCheck();
                         }
                         else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop
@@ -128,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                             image2.setVisibility(View.GONE);
                             score++;
                             points.setText("" + score);
-                            count++;
+                            //addMorePaper(image2);
                         }
                     }
 
@@ -141,13 +189,10 @@ public class MainActivity extends AppCompatActivity {
 
                         if (targetRight > imgRight && targetLeft < imgLeft && targetTop > imgTop
                                 && targetBottom > imgBottom && image3.getTag().equals("trash")) {
-
-
-                            //debugchannel.setText("yeaaaa");
                             image3.setVisibility(View.GONE);
                             score++;
                             points.setText("" + score);
-                            count++;
+                           /* addMoreBanana(image3);*/
                         }
                         else if(targetRight2 > imgRight && targetLeft2 < imgLeft && targetTop2 > imgTop
                                 && targetBottom2 > imgBottom && image3.getTag().equals("trash"))
@@ -155,12 +200,6 @@ public class MainActivity extends AppCompatActivity {
                             hitCheck();
                         }
                     }
-
-                    if (count == 3)
-                    {
-                        hitCheck();
-                    }
-
                     break;
                 case MotionEvent.ACTION_POINTER_DOWN:
                     break;
