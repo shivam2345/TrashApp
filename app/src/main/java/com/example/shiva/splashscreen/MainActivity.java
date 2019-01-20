@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                                 .y(target.getY())
                                 .setDuration(700)
                                 .start();
-                        Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                         image.setVisibility(View.GONE);
                         score++;
                         points.setText("Score: "+ score);
