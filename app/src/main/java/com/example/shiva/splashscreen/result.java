@@ -18,7 +18,12 @@ public class result extends Activity {
         TextView scoreLabel = (TextView) findViewById(R.id.scoreLabel);
 
         int score = getIntent().getIntExtra("SCORE", 0);
-        scoreLabel.setText(score + "");
+        if(score == 3)
+        {
+            scoreLabel.setText("Winner");
+        }
+        else
+            scoreLabel.setText(score + "");
 
         SharedPreferences settings = getSharedPreferences("SCORE", Context.MODE_PRIVATE);
     }
